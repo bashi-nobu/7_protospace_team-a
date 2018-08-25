@@ -6,7 +6,7 @@ Devise.setup do |config|
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
-  config.secret_key = '606bb3c2bc75573540209b78f3fb36dec6cb495f8e5ad1fe36c14e3e020cafcd50066e5313c5b5b99bea3011264a40b1f63d3a8790849e8a78099ed1b5f42fa9'
+  # config.secret_key = '0a13d12f4b3bbb334435207abf1658def4ad638b82053d1b2b9ebf83a6bc545f21b66755e3db8e661e3b277be0f303a084fb43a65717fd26bd526b6a1cbfae3b'
 
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
@@ -90,7 +90,6 @@ Devise.setup do |config|
   # from the server. You can disable this option at your own risk.
   # config.clean_up_csrf_token_on_authentication = true
 
-<<<<<<< HEAD
   # When false, Devise will not attempt to reload routes on eager load.
   # This can reduce the time taken to boot the app but if your application
   # requires the Devise mappings to be loaded during boot time the application
@@ -100,36 +99,22 @@ Devise.setup do |config|
   # ==> Configuration for :database_authenticatable
   # For bcrypt, this is the cost for hashing the password and defaults to 11. If
   # using other algorithms, it sets how many times you want the password to be hashed.
-=======
-  # ==> Configuration for :database_authenticatable
-  # For bcrypt, this is the cost for hashing the password and defaults to 10. If
-  # using other encryptors, it sets how many times you want the password re-encrypted.
->>>>>>> origin/master
   #
   # Limiting the stretches to just one in testing will increase the performance of
   # your test suite dramatically. However, it is STRONGLY RECOMMENDED to not use
   # a value less than 10 in other environments. Note that, for bcrypt (the default
-<<<<<<< HEAD
   # algorithm), the cost increases exponentially with the number of stretches (e.g.
   # a value of 20 is already extremely slow: approx. 60 seconds for 1 calculation).
   config.stretches = Rails.env.test? ? 1 : 11
 
   # Set up a pepper to generate the hashed password.
-  # config.pepper = 'd57ca1b250696ada569a9040aea3ed55c1f47e491321fbc4b2f6fe277db3fb901ef7e281bfee3deddad01d1ba8bdd4dff6c52e87a19b158e44b3dd82839c1e5e'
+  # config.pepper = '79c7bda354338694d3ef946d4cdba09501f11396fd40f6e57a0dd62e31426c115878bb88a956a0784dcda954e377a7d0ee50d54b0ac87aa67f8033b948ffb40b'
 
   # Send a notification to the original email when the user's email is changed.
   # config.send_email_changed_notification = false
 
   # Send a notification email when the user's password is changed.
   # config.send_password_change_notification = false
-=======
-  # encryptor), the cost increases exponentially with the number of stretches (e.g.
-  # a value of 20 is already extremely slow: approx. 60 seconds for 1 calculation).
-  config.stretches = Rails.env.test? ? 1 : 10
-
-  # Setup a pepper to generate the encrypted password.
-  # config.pepper = 'e631ea2ef98eb22a01a2b28c3833d8fbdd4391cfbd2ff8a2a6fe471a59ccad6216df86e84c99e5708436087cfa5bb49ce84021af374d36a5c852d64878c607c3'
->>>>>>> origin/master
 
   # ==> Configuration for :confirmable
   # A period that the user is allowed to access the website even without
@@ -174,12 +159,10 @@ Devise.setup do |config|
   # Range for password length.
   config.password_length = 6..128
 
-
   # Email regex used to validate email formats. It simply asserts that
   # one (and only one) @ exists in the given string. This is mainly
   # to give user feedback and not to assert the e-mail validity.
   config.email_regexp = /\A[^@\s]+@[^@\s]+\z/
-
 
   # ==> Configuration for :timeoutable
   # The time you want to timeout the user session without activity. After this
