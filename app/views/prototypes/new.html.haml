@@ -1,6 +1,7 @@
 .container.proto-new
   = form_for @prototype do |f|
     = f.hidden_field :user_id, value: current_user.id
+    = f.hidden_field :prototype_id, value: @prototype.id
     .col-md-8.col-md-offset-2
       %header.row.user-nav.row
         .col-md-12
@@ -32,5 +33,12 @@
         .col-md-12
           %h4 Concept
           = f.text_area :concept, require: true, placeholder: "Input Concept"
+        .col-md-12
+          %h4 Tag List
+          =f.fields_for @tag do |tag|
+            .col-md-3
+              = tag.text_field :tag_name,name: 'tag[]', require: true
+              = tag.text_field :tag_name,name: 'tag[]', require: true
+              = tag.text_field :tag_name,name: 'tag[]', require: true
       .row.text-center.proto-btn
         = f.submit "PUBLISH", id: "button", class: "btn btn-lg btn-primary btn-block"

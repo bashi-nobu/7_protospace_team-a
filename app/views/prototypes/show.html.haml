@@ -33,7 +33,12 @@
     .col-md-3
       %h4 Tag List
       %ul.proto-tag-list.list-inline
-        %li
-          %a{href: "#", class: "btn btn-default"} iPad
+        / - @tag.tag_name.each do |tag|
+        /   %a{href: "#", class: "btn btn-default"}
+        /     = @tag.tag_name
         %li
           %a{href: "#", class: "btn btn-default"} wireframe
+        %li
+          %a{href: "#", class: "btn btn-default"}
+            = @tag.tag_name
+
