@@ -21,7 +21,7 @@ has_many :prototypes, likes, comments
 
 ```
 has_many :captured_images, comments, likes
-has_many :tags, trhough: :tag_prototype
+has_many :tags, through: :tag_prototype
 has_many :tag_prototype
 belongs_to :user
 ```
@@ -88,6 +88,10 @@ has_many :posts, through: :tag_prototype
 ```
 belongs_to :prototypes, :tags
 ```
+
+### table
+- tag_id
+- prototype_id
 
 
 
