@@ -19,6 +19,22 @@ class PrototypesController < ApplicationController
      end
   end
 
+  def edit
+    @prototype = Prototype.find(params[:id])
+  end
+
+  def update
+  prototype = Prototype.find(params[:id])
+    if prototype.user_id == current_user.id
+      prototype.update(prototype_params)
+    end
+    if prototype.update_attributes(prototype_params)
+      redirect_to :root, notice: 'New prototype was successfully created'
+    else
+      redirect_to ({ action: edit }), alert: 'YNew prototype was unsuccessfully created'
+    end
+  end
+
   def show
   end
 
