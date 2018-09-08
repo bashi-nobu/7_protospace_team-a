@@ -13,7 +13,7 @@
             = link_to "#{@prototype.user.name}", user_path(@prototype.user)
             .degree
               = @prototype.user.position
-          %ul.proto-tag-list.list-inline.pull-right
+          %ul.list-inline.pull-right
             %li
               = link_to '編集', "/prototypes/#{@prototype.id}/edit", method: :get, class: "btn btn-default"
             %li
