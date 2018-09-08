@@ -37,3 +37,43 @@
           %a{href: "#", class: "btn btn-default"} iPad
         %li
           %a{href: "#", class: "btn btn-default"} wireframe
+    .row.proto-comments
+    .col-md-12
+      %h4
+        Comments(
+        %span.num#comments_count
+          = @comments.length
+          )
+        .comment__list
+          - @comments.each do |comment|
+            .media
+              .media__left
+                = image_tag(comment.user.avatar,size: "64x64")
+              .media__body
+                %h4.media-heading
+                  = comment.user.name
+                %p.comment_area
+                  = comment.content
+              .media__right
+                -if comment.user.id == current_user.id
+                  %ul.more_list
+                    %li.edit_btn
+                      = link_to "", class: "edit_btn", id: "com_id_#{comment.id}", method: :get do
+                        編集
+                    %li
+                      = link_to "/prototypes/#{@prototype.id}/comments/#{comment.id}", class: "del_btn", id: "com_id_#{comment.id}", method: :delete do
+                        削除
+    .col-md-8
+      %h4
+        Write a comment
+      #comments
+      = form_for @comment, html: { class: 'comment_form' }, url: {controller: 'comments', action: 'create', prototype_id: @prototype.id} do |f|
+        - if user_signed_in?
+          = f.hidden_field :user_id, id: 'user_id_num', value: current_user.id
+        - else
+          = f.hidden_field :user_id, id: 'user_id_num', value: "no_signed_in"
+        = f.hidden_field :prototype_id, id: 'prototype_id_num', value: @prototype.id
+        .form-group.col-md-10
+          = f.text_area :content,required: true, autofocus: true,class: 'form-control',id: "textarea",rows: "5", placeholder: "Input comment"
+        .form-group.col-md-2
+          = f.submit "COMMENT", id: "button", class: "btn btn-primary"
