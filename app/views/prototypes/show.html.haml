@@ -38,10 +38,10 @@
     .col-md-3
       %h4 Tag List
       %ul.proto-tag-list.list-inline
-        %li
-          %a{href: "#", class: "btn btn-default"} iPad
-        %li
-          %a{href: "#", class: "btn btn-default"} wireframe
+        - @category_list.each do |tag|
+          - unless tag.name == ""
+            %li
+              = link_to tag.name , category_path(tag.id), class: "btn btn-default"
     .row.proto-comments
     .col-md-12
       %h4
