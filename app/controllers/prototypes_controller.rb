@@ -7,16 +7,19 @@ class PrototypesController < ApplicationController
 
   def new
     @prototype = Prototype.new
+    @category = Category.new
     @prototype.captured_images.build
   end
 
   def create
     @prototype = Prototype.new(prototype_params)
+    category_list = params[:tag_list]
     if @prototype.save
+      @prototype.save_categories(category_list)
       redirect_to :root, notice: 'New prototype was successfully created'
     else
       redirect_to ({ action: new }), alert: 'YNew prototype was unsuccessfully created'
-     end
+    end
   end
 
   def destroy
@@ -31,12 +34,16 @@ class PrototypesController < ApplicationController
 
   def edit
     @prototype = Prototype.find(params[:id])
+    @category = Category.new
+    @category_list = @prototype.categories.pluck(:name)
   end
 
   def update
-  prototype = Prototype.find(params[:id])
+    prototype = Prototype.find(params[:id])
+    category_list = params[:tag_list]
     if prototype.user_id == current_user.id
       prototype.update(prototype_params)
+      prototype.save_categories(category_list)
     end
     if prototype.update_attributes(prototype_params)
       redirect_to :root, notice: 'New prototype was successfully created'
@@ -48,6 +55,7 @@ class PrototypesController < ApplicationController
   def show
     @comment = Comment.new
     @comments = Comment.includes(:user).where(prototype_id: @prototype.id)
+    @category_list = @prototype.categories.pluck(:name)
   end
 
   private
@@ -65,4 +73,5 @@ class PrototypesController < ApplicationController
       captured_images_attributes: [:content, :status]
     )
   end
+
 end
