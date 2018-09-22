@@ -39,10 +39,9 @@
       %h4 Tag List
       %ul.proto-tag-list.list-inline
         - @category_list.each do |tag|
-          - unless tag == ""
+          - unless tag.name == ""
             %li
-              %a{href: "#", class: "btn btn-default"}
-                = tag
+              = link_to tag.name , category_path(tag.id), class: "btn btn-default"
     .row.proto-comments
     .col-md-12
       %h4
