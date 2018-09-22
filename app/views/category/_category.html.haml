@@ -1,0 +1,8 @@
+- unless category.name == ''
+  .col-sm-4.col-md-3.proto-content
+    .tag-area
+      = link_to category.name, category_path(category.id), class: "btn-default tag-button"
+    .tag-count
+      = category.prototypes.length
+      Projects
+
