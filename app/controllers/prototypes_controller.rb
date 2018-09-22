@@ -55,7 +55,7 @@ class PrototypesController < ApplicationController
   def show
     @comment = Comment.new
     @comments = Comment.includes(:user).where(prototype_id: @prototype.id)
-    @category_list = @prototype.categories.pluck(:name)
+    @category_list = @prototype.categories
   end
 
   private
